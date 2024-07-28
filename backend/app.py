@@ -18,14 +18,14 @@ def add_item_db1():
     item_name = data.get('name')
     with engine_db1.connect() as conn_db1:
         conn_db1.execute(text("INSERT INTO items (name) VALUES (:name)"), {"name": item_name})
-    return jsonify({'message': 'Item added to DB1 successfully'}), 201
+    return jsonify({'message': 'Item adicionado no DB1'}), 201
 
 @app.route('/items/db1', methods=['DELETE'])
 def delete_item_db1():
     item_name = request.args.get('name')
     with engine_db1.connect() as conn_db1:
         conn_db1.execute(text("DELETE FROM items WHERE name = :name"), {"name": item_name})
-    return jsonify({'message': 'Item removed from DB1 successfully'}), 200
+    return jsonify({'message': 'Item removido do DB1'}), 200
 
 @app.route('/items/db1', methods=['GET'])
 def list_items_db1():
@@ -40,14 +40,14 @@ def add_item_db2():
     item_name = data.get('name')
     with engine_db2.connect() as conn_db2:
         conn_db2.execute(text("INSERT INTO items (name) VALUES (:name)"), {"name": item_name})
-    return jsonify({'message': 'Item added to DB2 successfully'}), 201
+    return jsonify({'message': 'Item adicionado no DB2'}), 201
 
 @app.route('/items/db2', methods=['DELETE'])
 def delete_item_db2():
     item_name = request.args.get('name')
     with engine_db2.connect() as conn_db2:
         conn_db2.execute(text("DELETE FROM items WHERE name = :name"), {"name": item_name})
-    return jsonify({'message': 'Item removed from DB2 successfully'}), 200
+    return jsonify({'message': 'Item removido do DB2'}), 200
 
 @app.route('/items/db2', methods=['GET'])
 def list_items_db2():
