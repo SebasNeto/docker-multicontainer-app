@@ -1,11 +1,14 @@
-const express = require('express');
-const axios = require('axios');
+const express = require('express'); //express framework web
+const axios = require('axios'); //requisições http
 const app = express();
 const PORT = 3001;
 
+//requisições json e URL
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+
+//página web 
 app.get('/', (req, res) => {
     res.send(`
         <html>
@@ -237,7 +240,7 @@ app.get('/', (req, res) => {
 app.post('/add-item-db1', async (req, res) => {
     const item = req.body.item;
     try {
-        const response = await axios.post('http://backend:5000/items/db1', { name: item });
+        const response = await axios.post('http://backend:5000/items/db1', { name: item }); //requisição POST ao backend
         res.json(response.data);
     } catch (error) {
         res.status(500).json({ error: 'Erro ao adicionar item ao DB1' });
@@ -303,5 +306,5 @@ app.get('/compare', async (req, res) => {
 });
 
 app.listen(PORT, () => {
-    console.log(`Frontend running on port ${PORT}`);
+    console.log(`Frontend rodando na porta ${PORT}`);
 });
